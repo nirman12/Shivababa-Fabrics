@@ -1,0 +1,2044 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&family=Darker+Grotesque:wght@300..900&family=Kaushan+Script&display=swap"
+      rel="stylesheet"
+    />
+    <title>ShivaBaba Fabrics</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Darker Grotesque", sans-serif;
+      }
+      body {
+        /* Match navbar height to remove whitespace */
+        margin-bottom: 0 !important;
+      }
+      html, body {
+        max-width: 100vw;
+        overflow-x: hidden;
+      }
+    
+      .navbar {
+        display: flex;
+        justify-content: space-around;
+        background-color: #fffefe;
+        align-items: center;
+        box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.1),
+          0 2px 12px 0 rgba(0, 0, 0, 0.07); /* Softer, more diffused shadow below navbar */
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: 64px;
+        font-family: "Darker Grotesque", sans-serif;
+      
+      }
+      .logo-fabrics {
+        padding: 10px;
+      }
+      .navbar a {
+        text-decoration: none;
+        color: black;
+        font-size: 1rem;
+        font-family: inherit;
+      }
+      .navbar-home {
+        color: #cd9933 !important;
+        text-decoration: underline !important;
+      }
+      .other-pages {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .other-pages a {
+        padding: 8px 15px;
+        transition: color 0.3s ease;
+        font-size: 1rem;
+        font-family: inherit;
+      }
+      .other-pages a:hover {
+        color: #cd9933;
+      }
+      .other-pages button {
+        padding: 10px 20px;
+        border-radius: 7px;
+        border: none;
+        background-color: #d3b58c;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: inherit;
+        font-size: 1rem;
+      }
+      .other-pages button:hover {
+        background-color: #bfa06a;
+        transform: translateY(-2px);
+      }
+      .navbar-contact-btn {
+        cursor: pointer;
+      }
+
+      /* Mobile menu toggle */
+      .mobile-menu-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 5px;
+      }
+
+      .mobile-menu-toggle span {
+        width: 25px;
+        height: 3px;
+        background-color: #333;
+        margin: 3px 0;
+        transition: 0.3s;
+      }
+
+      .mobile-menu-toggle.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+
+      .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-menu-toggle.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
+
+      /* Mobile navbar styles */
+      @media (max-width: 768px) {
+        .navbar {
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 15px 20px;
+          position: fixed;
+        }
+
+        .mobile-menu-toggle {
+          display: flex;
+        }
+
+        .other-pages {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background-color: #fffefe;
+          flex-direction: column;
+          padding: 20px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          transform: translateY(-100%);
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+          z-index: 1000;
+        }
+
+        .other-pages.active {
+          transform: translateY(0);
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .other-pages a {
+          padding: 12px 0;
+          text-align: center;
+          border-bottom: 1px solid #eee;
+          display: block;
+          font-size: 1rem;
+        }
+
+        .other-pages a:last-child {
+          border-bottom: none;
+        }
+
+        .other-pages button {
+          margin-top: 10px;
+          padding: 12px 20px;
+          font-size: 1rem;
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .navbar {
+          padding: 12px 15px;
+          position: fixed;
+        }
+      }
+      /* navbar css closed */
+
+      /* main css started */
+      .main {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #d3b58c;
+        overflow-x: hidden;
+        padding-top: 64px;
+        position: relative;
+      }
+      .main-image img {
+        display: block;
+        margin: 0;
+        padding: 0;
+      }
+      /* For large screens (default) */
+      .main-image img {
+        width: 400px; /* or your preferred large size */
+        height: auto;
+        max-width: 100%;
+      }
+      /* For large screens (default) */
+      .main-details .main-title {
+        font-size: 3rem; /* or your preferred large size */
+      }
+      .main .main-description {
+        font-size: 1.5rem; /* or your preferred large size */
+      }
+
+      /* For small screens, keep as is */
+      @media (max-width: 768px) {
+        .main-image img {
+          max-width: 60%; /* or your current value */
+          height: auto;
+        }
+        .main-details .main-title {
+          font-size: 1.5rem;
+        }
+        .main .main-description {
+          font-size: 1rem;
+        }
+      }
+      @media (max-width: 480px) {
+        .main-image img {
+          max-width: 100%; /* or your current value */
+          height: auto;
+        }
+        .main-details .main-title {
+          font-size: 1.2rem;
+        }
+        .main .main-description {
+          font-size: 0.9rem;
+        }
+      }
+      .main-details {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        margin-bottom: 0;
+      }
+      .main-details .main-title {
+        text-transform: uppercase;
+        padding-bottom: 10px;
+        font-family: "Antonio", sans-serif;
+      }
+      .main .main-description {
+        padding-bottom: 10px;
+      }
+      .main .main-view-products {
+        padding: 10px;
+        width: 150px;
+        border-radius: 7px;
+        border: none;
+        background-color: #9b7f5d;
+        color: white;
+        font-weight: 600;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+
+      /* Mobile main section styles */
+      @media (max-width: 768px) {
+        .main {
+          flex-direction: row;
+          align-items: flex-start;
+          padding: 20px;
+          text-align: center;
+          height: auto;
+          margin-bottom: 0;
+          padding-bottom: 0;
+          padding-top: 84px;
+        }
+        .main-details {
+          width: 60%;
+          max-width: 100%;
+          text-align: left;
+          margin-bottom: 20px;
+          margin-top: 10%;
+        }
+        .main-details .main-title {
+          font-size: 1.5rem;
+          text-align: left;
+        }
+        .main-image {
+          width: 60%;
+          margin-right: -150px;
+          margin-top: -20px;
+        }
+        .main-image img {
+          max-width: 60%;
+          height: auto;
+        }
+        .hero-oval-container {
+          width: 70vw;
+          height: 16vw;
+          min-width: 0;
+          min-height: 0;
+        }
+        .hero-oval-text {
+          font-size: 1.2rem;
+          left: 50%;
+          top: 50%;
+          transform: translate(-75%, -55%);
+          width: 90%;
+          text-align: center;
+          white-space: nowrap;
+        }
+        .oval-bg-img {
+          width: 80%;
+          height: 80%;
+          display: block;
+          margin: 0% 10% 0%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .main {
+          padding-top: 0;
+          padding-top: 84px;
+        }
+        .main-details .main-title {
+          font-size: 1.2rem;
+          padding-top: 10px;
+        }
+        .main .main-description {
+          font-size: 0.9rem;
+        }
+        .main .main-view-products {
+          width: 120px;
+          padding: 8px;
+          font-size: 1rem;
+        }
+        .main-details {
+          margin-top: 0%;
+        }
+        .main-image {
+          margin-right: -100px;
+        }
+      }
+      /* main css closed */
+
+      /* hero css started */
+      .hero-oval-container {
+        position: relative;
+        width: 700px;
+        height: 140px;
+        margin: 150px auto 60px auto;
+        transition: opacity 2s ease, visibility 2s ease,
+          transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform, opacity, visibility;
+      }
+      .hero-hidden {
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+        transform: translateX(-250px) !important;
+      }
+      .hero-animate {
+        opacity: 1;
+        pointer-events: auto;
+        visibility: visible;
+        transform: translateX(0) !important;
+      }
+      .oval-bg-img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .hero-oval-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-75%, -55%);
+        font-family: "Kaushan Script", cursive;
+        font-size: 5rem;
+        font-weight: 400;
+        color: #000;
+        white-space: nowrap;
+        width: 90%;
+        text-align: center;
+        pointer-events: none;
+      }
+      .hero-description {
+        text-align: center;
+        max-width: 800px;
+        margin: 30px auto 0 auto;
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 1.5;
+        color: #222;
+        font-family: "Darker Grotesque", sans-serif;
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity 2s ease, transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .hero-desc-hidden {
+        opacity: 0;
+        transform: translateX(250px) !important;
+        pointer-events: none;
+        visibility: hidden;
+      }
+      .hero-desc-animate {
+        opacity: 1;
+        transform: translateX(0) !important;
+        pointer-events: auto;
+        visibility: visible;
+      }
+      @media (max-width: 1024px) {
+        .hero-oval-text {
+          font-size: 4rem;
+          margin-left: 15%;
+        }
+        .oval-bg-img {
+          width: 80%;
+          margin-left: 10%;
+        }
+        .hero-description {
+          margin: 10px 20px 0 10%;
+          font-weight: 500;
+        }
+      }
+
+      /* Mobile hero styles */
+      @media (max-width: 768px) {
+        .hero-oval-container {
+          width: 90%;
+          height: 50%;
+        }
+
+        .hero-oval-text {
+          padding: 20px 0px;
+          font-size: 2rem;
+          margin: 0% 20% 0%;
+        }
+        .oval-bg-img {
+          width: 45%;
+
+          margin: 1% 26%;
+        }
+        .hero-description {
+          margin: 5px 40px 0 40px;
+          font-size: 1rem;
+          font-weight: 500;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-oval-container {
+          width: 100%;
+          margin-top: 20%;
+        }
+        .hero-oval-text {
+          padding: 10px 0px;
+          font-size: 1.5rem;
+        }
+        .hero-description {
+          font-size: 0.9rem;
+          text-align: center;
+          font-weight: 500;
+        }
+      }
+      @media (max-width: 380px) {
+        .hero-description {
+          text-align: justify;
+        }
+      }
+      /* hero css closed */
+
+      /* our-products started */
+      .our-products {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0;
+      }
+      .our-products-title {
+        text-align: center;
+        padding: 20px;
+        font-size: 3rem;
+        background-color: #fff;
+        margin-bottom: 0;
+        margin-top: 50px;
+      }
+      .our-products-all {
+        display: flex;
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 0;
+      }
+      .shawls,
+      .scarfs {
+        width: 50%;
+        height: 90%;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .product-label {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        padding: 20px;
+        color: #000;
+        background-color: #fff;
+        z-index: 3;
+      }
+      .image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 70vh; /* Decreased height */
+      }
+      .image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: filter 0.4s ease;
+        display: block;
+      }
+      .shop-button {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 12px 30px;
+        border: 2px solid white;
+        background-color: rgba(0, 0, 0, 0.5); /* transparent grey */
+        color: white;
+        font-size: 1rem;
+        border-radius: 5px;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 2;
+        cursor: pointer;
+      }
+      .shawls:hover .image-wrapper img,
+      .scarfs:hover .image-wrapper img {
+        filter: blur(4px);
+      }
+      .shawls:hover .shop-button,
+      .scarfs:hover .shop-button {
+        opacity: 1;
+      }
+
+      /* Mobile our-products styles */
+      @media (max-width: 768px) {
+        .our-products {
+          height: auto;
+          min-height: 100vh;
+        }
+        .our-products-title {
+          font-size: 2rem;
+        }
+        .our-products-all {
+          flex-direction: column;
+        }
+        .shawls,
+        .scarfs {
+          width: 100%;
+          height: 50vh;
+        }
+        .product-label {
+          font-size: 1.5rem;
+          padding: 15px;
+        }
+        .image-wrapper {
+          height: calc(50vh - 60px);
+        }
+        .shop-button {
+          padding: 10px 20px;
+          font-size: 0.9rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .our-products-title {
+          font-size: 1.5rem;
+          padding: 15px;
+        }
+        .product-label {
+          font-size: 1.2rem;
+          padding: 10px;
+        }
+        .shawls,
+        .scarfs {
+          height: 40vh;
+        }
+        .image-wrapper {
+          height: calc(40vh - 50px);
+        }
+        .shop-button {
+          padding: 8px 16px;
+          font-size: 0.8rem;
+        }
+      }
+      /* our-products closed */
+
+      /* Featured products css started */
+      .featured-products {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: #fff;
+        padding: 50px 20px;
+        min-height: 60vh;
+        margin-top: 20px;
+      }
+      .featured-products-header h2 {
+        font-size: 3rem;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        color: black;
+      }
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 30px;
+        width: 100%;
+        max-width: 1200px;
+        min-height: 40vh;
+      }
+      .product-image-wrapper {
+        width: 100%;
+        flex: 1 1 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: #fff;
+      }
+      .product-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .product-card {
+        background-color: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        height: 350px;
+      }
+      .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.22);
+      }
+      .product-card-title {
+        flex: 0 0 56px;
+        padding: 10px 8px;
+        font-size: 1.1rem;
+        color: black;
+        min-height: unset;
+        text-align: center;
+        margin: 0;
+        line-height: 1.3;
+        white-space: normal;
+        word-break: break-word;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .featured-product-btn {
+        margin-top: 40px;
+      }
+      .view-all-products {
+        padding: 12px 25px;
+        font-size: 1rem;
+        border-radius: 8px;
+        border: 2px solid #000;
+        background-color: #000;
+        color: #fff;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .view-all-products:hover {
+        background-color: #605f5f;
+        color: #fff;
+        border: 2px solid #605f5f;
+      }
+      @media (max-width: 600px) {
+        .featured-products {
+          padding: 30px 15px;
+        }
+        .featured-products-header h2 {
+          font-size: 2rem;
+        }
+        .products-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .product-card {
+          height: 380px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+          width: 90%;
+          max-width: 320px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .product-image-wrapper {
+          width: 100%;
+          height: 290px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #fff;
+          overflow: hidden;
+          padding: 0;
+        }
+        .product-image-wrapper img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          margin: 0;
+        }
+        .product-card-title {
+          font-size: 1.1rem;
+          font-weight: bold;
+          text-align: center;
+          margin: 0;
+          padding: 12px 8px 0 8px;
+          line-height: 1.3;
+          white-space: normal;
+          word-break: break-word;
+          overflow: hidden;
+        }
+        .view-all-products {
+          padding: 10px 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .featured-products-header h2 {
+          font-size: 1.5rem;
+          margin-bottom: 20px;
+        }
+        .products-grid {
+          grid-template-columns: 1fr;
+          gap: 15px;
+        }
+        .product-card {
+          height: 340px;
+          width: 95%;
+          max-width: 290px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .product-image-wrapper {
+          height: 220px;
+          padding: 0;
+        }
+        .product-image-wrapper img {
+          margin: 0;
+        }
+        .product-card-title {
+          font-size: 1rem;
+          padding: 10px 6px 0 6px;
+        }
+      }
+      /* featured products closed */
+
+      /* our services started */
+      .our-services {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #d4b896; /* Beige background like in image */
+        padding: 50px 20px;
+        overflow-x: hidden;
+      }
+
+      .our-services-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+        color: #333;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .service-weaving,
+      .service-dyeing,
+      .service-printing,
+      .service-finishing {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        max-width: 800px;
+        height: 200px;
+        margin-bottom: 30px;
+        background-color: #6b5b4d; /* Dark brown background for cards */
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .service-weaving img,
+      .service-dyeing img,
+      .service-printing img,
+      .service-finishing img {
+        width: 35%; /* Reduced from 40% */
+        height: 80%; /* Reduced from 100% */
+        object-fit: cover;
+        display: block;
+        margin: 20px; /* Added margins on all sides */
+        border-radius: 10px; /* Optional: add rounded corners to images */
+      }
+
+      .services-description {
+        width: 65%; /* Increased from 60% to compensate for smaller image */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 25px;
+        background-color: #6b5b4d; /* Same dark brown */
+        color: white;
+        text-align: center; /* Center align text */
+      }
+
+      .services-title {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        color: white;
+        font-weight: bold;
+      }
+
+      .our-services p {
+        color: #e0e0e0;
+        line-height: 1.6;
+        font-size: 1rem;
+      }
+
+      .service-weaving,
+      .service-dyeing,
+      .service-printing,
+      .service-finishing {
+        opacity: 1;
+        transform: none;
+        transition: opacity 3s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 3s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .service-hidden {
+        opacity: 0;
+        transform: translateY(60px) scale(0.98);
+      }
+
+      .service-animate {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .service-slide-left-hidden {
+        opacity: 0;
+        transform: translateX(-250px) !important;
+        pointer-events: none;
+        visibility: hidden;
+      }
+      .service-slide-left-animate {
+        opacity: 1;
+        transform: translateX(0) !important;
+        pointer-events: auto;
+        visibility: visible;
+        transition: opacity 3s cubic-bezier(0.16, 1, 0.3, 1) 0.2s,
+          transform 3s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+      }
+      .service-slide-right-hidden {
+        opacity: 0;
+        transform: translateX(250px) !important;
+        pointer-events: none;
+        visibility: hidden;
+      }
+      .service-slide-right-animate {
+        opacity: 1;
+        transform: translateX(0) !important;
+        pointer-events: auto;
+        visibility: visible;
+        transition: opacity 3s cubic-bezier(0.16, 1, 0.3, 1) 0.2s,
+          transform 3s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+      }
+
+      /* Default: row layout for large screens */
+      .service-weaving,
+      .service-dyeing {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .service-printing,
+      .service-finishing {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+      }
+
+      /* Column layout for small screens */
+      @media (max-width: 768px) {
+        .service-weaving,
+        .service-printing,
+        .service-dyeing,
+        .service-finishing {
+          flex-direction: column;
+          align-items: stretch;
+        }
+      }
+
+      /* Mobile styles */
+      @media (max-width: 768px) {
+        .our-services {
+          padding: 30px 15px;
+        }
+
+        .our-services-title {
+          font-size: 1.8rem;
+          margin-bottom: 25px;
+        }
+
+        .service-weaving,
+        .service-dyeing,
+        .service-printing,
+        .service-finishing {
+          flex-direction: column;
+          height: auto;
+          margin-bottom: 20px;
+          max-width: 100%;
+        }
+
+        .service-weaving img,
+        .service-dyeing img,
+        .service-printing img,
+        .service-finishing img {
+          width: calc(100% - 40px); /* Full width minus margins */
+          height: 160px; /* Reduced from 180px */
+          object-fit: cover;
+          margin: 20px; /* Keep margins on mobile */
+          border-radius: 10px;
+        }
+
+        .services-description {
+          width: 100%;
+          padding: 20px;
+        }
+
+        .services-title {
+          font-size: 1.4rem;
+          margin-bottom: 10px;
+        }
+
+        .our-services p {
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .our-services {
+          padding: 20px 10px;
+        }
+
+        .our-services-title {
+          font-size: 1.5rem;
+          margin-bottom: 20px;
+        }
+
+        .service-weaving img,
+        .service-dyeing img,
+        .service-printing img,
+        .service-finishing img {
+          height: 130px; /* Reduced from 150px */
+          margin: 15px; /* Slightly smaller margins on small screens */
+          width: calc(100% - 30px);
+          opacity: 1;
+          transform: none;
+          transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-hidden {
+          opacity: 0;
+          transform: translateY(60px) scale(0.98);
+        }
+
+        .service-animate {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+
+        .services-description {
+          padding: 15px;
+        }
+
+        .services-title {
+          font-size: 1.2rem;
+        }
+
+        .our-services p {
+          font-size: 0.85rem;
+        }
+      }
+      /* our-services css closed */
+
+      /* footer css started */
+      .footer * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .footer {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        color: black;
+        background-color: white;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        padding: 40px 20px;
+        box-shadow: 0 -8px 40px 0 rgba(0, 0, 0, 0.1),
+          0 -2px 12px 0 rgba(0, 0, 0, 0.07);
+        margin-bottom: 0 !important;
+        padding-bottom: 20px !important;
+        gap: 20px;
+      }
+
+      .footer-main {
+        padding: 40px 20px;
+        text-align: center;
+        
+      }
+
+      .footer-main h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .footer-main p {
+        font-size: 1.2rem;
+        color: #666;
+      }
+
+      .footer ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer ul li {
+        padding: 4px 0;
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      .footer ul li a {
+        color: #666;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer ul li a:hover {
+        color: #333;
+      }
+
+      .footer-collections,
+      .footer-links-header,
+      .footer-support-header,
+      .footer-contact-info {
+        padding: 0 0 12px 0;
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: #333;
+      }
+
+      .footer .footer-collection,
+      .footer-links,
+      .footer-support,
+      .footer-contact {
+        text-align: center;
+        min-width: 180px;
+        flex: 1 1 200px;
+      }
+
+      /* Center brand section styling */
+      .footer-brand-center {
+        text-align: center;
+        min-width: 200px;
+        flex: 1 1 220px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .footer-brand-name {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 15px;
+        padding: 0;
+      }
+
+      .footer-social-icons {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+      }
+
+      .footer-social-link {
+        color: #666;
+        transition: all 0.3s ease;
+        padding: 8px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+      }
+
+      .footer-social-link:hover {
+        color: #333;
+        background-color: #f5f5f5;
+        transform: translateY(-2px);
+      }
+
+      .footer-social-link svg {
+        transition: transform 0.3s ease;
+      }
+
+      .footer-social-link:hover svg {
+        transform: scale(1.1);
+      }
+
+      /* Contact items with icons */
+      .footer-contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 6px 0;
+      }
+
+      .footer-contact-icon {
+        color: #666;
+        flex-shrink: 0;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .footer {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding: 30px 15px;
+          gap: 25px;
+        }
+
+        .footer .footer-collection,
+        .footer-links,
+        .footer-brand-center,
+        .footer-support,
+        .footer-contact {
+          width: 100%;
+          padding: 0;
+          min-width: auto;
+        }
+
+        .footer-collections,
+        .footer-links-header,
+        .footer-support-header,
+        .footer-contact-info {
+          font-size: 1rem;
+          margin-bottom: 10px;
+        }
+
+        .footer-brand-name {
+          font-size: 1.3rem;
+          margin-bottom: 12px;
+        }
+
+        .footer-social-icons {
+          gap: 20px;
+        }
+
+        .footer ul li {
+          font-size: 0.9rem;
+          padding: 3px 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .footer-main h1 {
+          font-size: 2rem;
+        }
+
+        .footer-main p {
+          font-size: 1rem;
+        }
+
+        .footer {
+          padding: 25px 10px;
+          gap: 20px;
+        }
+
+        .footer-collections,
+        .footer-links-header,
+        .footer-support-header,
+        .footer-contact-info {
+          font-size: 0.95rem;
+          margin-bottom: 8px;
+        }
+
+        .footer-brand-name {
+          font-size: 1.2rem;
+          margin-bottom: 10px;
+        }
+
+        .footer-social-icons {
+          gap: 15px;
+        }
+
+        .footer ul li {
+          font-size: 0.85rem;
+          padding: 2px 0;
+        }
+
+        .footer-contact-item {
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .footer-contact-icon {
+          display: none;
+        }
+      }
+
+      /* Animation for page load */
+      .footer {
+        animation: slideUp 0.6s ease-out;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      /* Scroll to top button */
+      .scroll-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background-color: #d3b58c;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+        z-index: 1001;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .scroll-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .scroll-to-top:hover {
+        background-color: #9b7f5d;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .scroll-to-top svg {
+        width: 20px;
+        height: 20px;
+        fill: white;
+      }
+
+      @media (max-width: 768px) {
+        .scroll-to-top {
+          bottom: 20px;
+          right: 20px;
+          width: 45px;
+          height: 45px;
+        }
+
+        .scroll-to-top svg {
+          width: 18px;
+          height: 18px;
+        }
+      }
+
+      /* Footer link styles */
+      .footer a {
+        text-decoration: none;
+        color: #666;
+        transition: color 0.3s ease;
+      }
+
+      .footer a:hover {
+        color: #cd9933;
+      }
+
+      @media (min-width: 1400px) {
+        .our-services {
+          padding: 100px 0;
+        }
+        .our-services-title {
+          font-size: 3.5rem;
+          margin-top: 70px;
+        }
+        .service-weaving,
+        .service-dyeing,
+        .service-printing,
+        .service-finishing {
+          height: 320px;
+          max-width: 1100px;
+          margin-bottom: 50px;
+        }
+        .services-title {
+          font-size: 2.4rem;
+        }
+        .services-description {
+          font-size: 1.3rem;
+          padding: 40px;
+        }
+        .service-weaving img,
+        .service-dyeing img,
+        .service-printing img,
+        .service-finishing img {
+          height: 90%;
+          max-width: 420px;
+        }
+        .image-wrapper {
+          height: 90vh;
+        }
+        .featured-products {
+          min-height: 60vh;
+        }
+        .products-grid {
+          min-height: 40vh;
+        }
+        .product-card img {
+          height: 300px;
+        }
+        .product-card h3 {
+          font-size: 1.4rem;
+        }
+        .our-products {
+          margin-bottom: 4%;
+        }
+        .featured-products-header h2 {
+          font-size: 3.5rem;
+          margin-top: 70px;
+          margin-bottom: 60px;
+        }
+      }
+
+      @media (min-width: 1800px) {
+        .our-products {
+          margin-bottom: 6%;
+        }
+        .featured-products-header h2 {
+          font-size: 4rem;
+          margin-top: 90px;
+          margin-bottom: 70px;
+        }
+      }
+      @media (max-width: 380px) {
+        .main {
+          padding-top: 84px;
+          padding-bottom: 0;
+          margin-bottom: 0;
+          min-height: unset;
+        }
+        .main-details .main-title {
+          font-size: 1rem;
+          padding-top: 6px;
+          padding-bottom: 4px;
+        }
+        .main .main-description {
+          font-size: 0.8rem;
+          padding-bottom: 4px;
+        }
+        .main .main-view-products {
+          width: 90px;
+          padding: 6px;
+          font-size: 0.8rem;
+          margin-bottom: 0;
+        }
+        .main-image {
+          margin-right: -60px;
+          margin-bottom: 0;
+        }
+        .main-image img {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          margin-bottom: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="container">
+      <header class="navbar">
+        <div class="logo-fabrics">
+          <img
+            src="images/Logo.png"
+            alt="Logo of shivababa fabrics"
+            height="40px"
+          />
+        </div>
+        <div class="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="other-pages">
+          <a href="index.html" class="navbar-home-link">Home</a>
+          <a href="products.html" class="navbar-products-link">Products</a>
+          <a href="#our-services">Services</a>
+          <a href="#hero">About Us</a>
+          <a href="contactpage.html" class="navbar-contact-link"><button class="navbar-contact-btn">Contact Us</button></a>
+        </div>
+      </header>
+      <main class="main">
+        <div class="main-details">
+          <h1 class="main-title">
+            Largest manufacturer of shawls and scarfs in nepal
+          </h1>
+          <p class="main-description">
+            Developing, manufacturing and exporting high quality Shawls and
+            Scarfs all around the world since 2013.
+          </p>
+          <button class="main-view-products">View Products</button>
+        </div>
+        <div class="main-image">
+          <img
+            src="images/main-image.png"
+            alt="This is the product image."
+            height="400px"
+          />
+        </div>
+      </main>
+      <div class="hero-oval-container hero-hidden" id="hero">
+        <img src="images/oval.png" alt="Oval background" class="oval-bg-img" />
+        <span class="hero-oval-text">Weaving Tradition into Style</span>
+      </div>
+      <p class="hero-description hero-desc-hidden">
+        Shiva Baba Fabric Pvt. Ltd, is a trusted partner for high-quality shawls
+        and scarves. Since 2014, we've been specializing in wholesale
+        manufacturing, helping businesses bring their designs and ideas to life.
+        Whether it's a special pattern, a type of material, or specific style,
+        our skilled teams ensures top-quality craftmanship every time. With
+        competitive prices, reliable bulk production, and on-time delivery, we
+        make it easy to grow your business with exceptional shawls and scarves.
+        Partner with us to create products you desire and your customers will
+        love!
+      </p>
+      <div class="our-products" id="our-products">
+        <div class="our-products-title">
+          <h2>Our Products</h2>
+        </div>
+        <div class="our-products-all">
+          <div class="shawls">
+            <div class="product-label">Shawls</div>
+            <div class="image-wrapper">
+              <img src="images/hero-shawls.jpg" alt="Shawls" />
+              <button class="shop-button">Shop Now</button>
+            </div>
+          </div>
+          <div class="scarfs">
+            <div class="product-label">Scarfs</div>
+            <div class="image-wrapper">
+              <img src="images/hero-scarfs.png" alt="Scarfs" />
+              <button class="shop-button">Shop Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="featured-products" id="products">
+        <div class="featured-products-header">
+          <h2>Featured Products</h2>
+        </div>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-image-wrapper">
+              <img src="images/flower-pattern-shawl.png" alt="Shawl" />
+            </div>
+            <h3 class="product-card-title">Flower Patterned Shawl</h3>
+          </div>
+          <div class="product-card">
+            <div class="product-image-wrapper">
+              <img
+                src="images/flower-pattern-shawl-gold.png"
+                alt="Golden Shawl"
+              />
+            </div>
+            <h3 class="product-card-title">Flower Patterned Shawl(Gold)</h3>
+          </div>
+          <div class="product-card">
+            <div class="product-image-wrapper">
+              <img src="images/embroidery-scarf.png" alt="Elegant Scarf" />
+            </div>
+            <h3 class="product-card-title">Embroidery Scarf</h3>
+          </div>
+          <div class="product-card">
+            <div class="product-image-wrapper">
+              <img src="images/sitara-scarf.png" alt="Sitara Scarf" />
+            </div>
+            <h3 class="product-card-title">Sitara Scarf</h3>
+          </div>
+        </div>
+        <div class="featured-product-btn">
+          <button class="view-all-products">View all products</button>
+        </div>
+      </div>
+    </div>
+    <div class="our-services" id="our-services">
+      <div class="our-services-title">
+        <h2 class="title-services">Our Services</h2>
+      </div>
+      <div class="service-weaving service-slide-left-hidden">
+        <img src="images/weaving.jpg" alt="weaving image" />
+        <div class="services-description">
+          <h3 class="services-title">Weaving</h3>
+          <p class="weaving-description">
+            Machine weaving is a modern textile process that uses automated
+            looms to interlace yarns efficiently, producing consistent and
+            high-quality fabrics at scale.
+          </p>
+        </div>
+      </div>
+      <div class="service-printing service-slide-right-hidden">
+        <img src="images/printing.png" alt="printing image" />
+        <div class="services-description">
+          <h3 class="services-title">Printing</h3>
+          <p class="printing-description">
+            Machine printing applies intricate designs to fabric with speed and
+            accuracy, enabling vibrant, repeatable patterns across large
+            volumes.
+          </p>
+        </div>
+      </div>
+      <div class="service-dyeing service-slide-left-hidden">
+        <img src="images/dyeing.png" alt="dyeing image" />
+        <div class="services-description">
+          <h3 class="services-title">Dyeing</h3>
+          <p class="dyeing-description">
+            Machine dyeing ensures uniform color application on fabrics using
+            automated systems, offering precision and consistency in large-scale
+            textile production.
+          </p>
+        </div>
+      </div>
+      <div class="service-finishing service-slide-right-hidden">
+        <img src="images/finishing.png" alt="finishing image" />
+        <div class="services-description">
+          <h3 class="services-title">Finishing</h3>
+          <p class="finishing-description">
+            Finishing processes like raising, calendaring, scouring, bleaching,
+            and softening enhance fabric quality—adding softness, smoothness,
+            brightness, and comfort while preparing the material for final use.
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-collection">
+        <h5 class="footer-collections">Collections</h5>
+        <ul class="collection-list">
+          <li><a href="#products">Products</a></li>
+          <li><a href="#our-products">Scarfs</a></li>
+          <li><a href="#our-products">Shawls</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h5 class="footer-links-header">Links</h5>
+        <ul class="link-list">
+          <li><a href="#container">Home</a></li>
+          <li><a href="contactpage.html">Contact Us</a></li>
+          <li><a href="#our-services">Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-brand-center">
+        <h4 class="footer-brand-name">Shiva Baba Fabric</h4>
+        <div class="footer-social-icons">
+          <a href="#" aria-label="Facebook" class="footer-social-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="#bfa06a"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"
+              />
+            </svg>
+          </a>
+          <a href="#" aria-label="Instagram" class="footer-social-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="#bfa06a"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"
+              />
+            </svg>
+          </a>
+          <a href="#" aria-label="Twitter" class="footer-social-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="#bfa06a"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-support">
+        <h5 class="footer-support-header">Customer Support</h5>
+        <ul class="support-list">
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Shipping Info</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h5 class="footer-contact-info">Contact Info</h5>
+        <ul>
+          <li class="footer-contact-item">
+            <svg
+              class="footer-contact-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              fill="#bfa06a"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"
+              />
+            </svg>
+            Jhaukhel, Bhaktapur, Nepal
+          </li>
+          <li class="footer-contact-item">
+            <svg
+              class="footer-contact-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              fill="#bfa06a"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"
+              />
+            </svg>
+            sbfi2071@hotmail.com
+          </li>
+          <li class="footer-contact-item">
+            <svg
+              class="footer-contact-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              fill="#bfa06a"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"
+              />
+            </svg>
+            9813506339
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+      </svg>
+    </button>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+        const otherPages = document.querySelector(".other-pages");
+
+        mobileMenuToggle.addEventListener("click", function () {
+          this.classList.toggle("active");
+          otherPages.classList.toggle("active");
+        });
+
+        // Close menu when clicking on a link
+        const menuLinks = document.querySelectorAll(".other-pages a");
+        menuLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            mobileMenuToggle.classList.remove("active");
+            otherPages.classList.remove("active");
+          });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", function (event) {
+          if (!event.target.closest(".navbar")) {
+            mobileMenuToggle.classList.remove("active");
+            otherPages.classList.remove("active");
+          }
+        });
+
+        // Service animation code
+        const serviceCards = document.querySelectorAll(
+          ".service-weaving, .service-printing, .service-dyeing, .service-finishing"
+        );
+
+        const observerOptions = {
+          threshold: 0.2,
+        };
+
+        const serviceObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("service-animate");
+                entry.target.classList.remove("service-hidden");
+                observer.unobserve(entry.target); // Animate only once
+              }
+            });
+          },
+          observerOptions
+        );
+
+        serviceCards.forEach((card) => {
+          serviceObserver.observe(card);
+        });
+
+        // Hero/Oval animation code
+        const heroOval = document.querySelector(".hero-oval-container");
+        const heroDesc = document.querySelector(".hero-description");
+        let triggerPixelOval, triggerPixelDesc;
+        if (window.innerWidth <= 600) {
+          // Instantly show oval and description, no animation on small screens
+          heroOval.classList.remove('hero-hidden');
+          heroOval.classList.add('hero-animate');
+          heroDesc.classList.remove('hero-desc-hidden');
+          heroDesc.classList.add('hero-desc-animate');
+        } else {
+          triggerPixelOval = 300;
+          triggerPixelDesc = 500;
+
+          function checkAndAnimateHeroOval() {
+            if (window.scrollY >= triggerPixelOval) {
+              heroOval.classList.add("hero-animate");
+              heroOval.classList.remove("hero-hidden");
+              window.removeEventListener("scroll", checkAndAnimateHeroOval);
+            }
+          }
+          function checkAndAnimateHeroDesc() {
+            if (window.scrollY >= triggerPixelDesc) {
+              heroDesc.classList.add("hero-desc-animate");
+              heroDesc.classList.remove("hero-desc-hidden");
+              window.removeEventListener("scroll", checkAndAnimateHeroDesc);
+            }
+          }
+          window.addEventListener("scroll", checkAndAnimateHeroOval);
+          window.addEventListener("scroll", checkAndAnimateHeroDesc);
+        }
+
+        // Our Services animation code
+        const serviceWeaving = document.querySelector(".service-weaving");
+        const servicePrinting = document.querySelector(".service-printing");
+        const serviceDyeing = document.querySelector(".service-dyeing");
+        const serviceFinishing = document.querySelector(".service-finishing");
+        function getOffsetTop(elem) {
+          let offsetTop = 0;
+          while (elem) {
+            offsetTop += elem.offsetTop;
+            elem = elem.offsetParent;
+          }
+          return offsetTop;
+        }
+        function setServiceTriggers() {
+          const vh = window.innerHeight;
+          triggerWeaving = getOffsetTop(serviceWeaving) - vh + 350;
+          triggerPrinting = getOffsetTop(servicePrinting) - vh + 350;
+          triggerDyeing = getOffsetTop(serviceDyeing) - vh + 350;
+          triggerFinishing = getOffsetTop(serviceFinishing) - vh + 350;
+        }
+        setServiceTriggers();
+        window.addEventListener("resize", setServiceTriggers);
+
+        function checkAndAnimateServiceWeaving() {
+          if (window.scrollY >= triggerWeaving) {
+            serviceWeaving.classList.add("service-slide-left-animate");
+            serviceWeaving.classList.remove("service-slide-left-hidden");
+            window.removeEventListener("scroll", checkAndAnimateServiceWeaving);
+          }
+        }
+        function checkAndAnimateServicePrinting() {
+          if (window.scrollY >= triggerPrinting) {
+            servicePrinting.classList.add("service-slide-right-animate");
+            servicePrinting.classList.remove("service-slide-right-hidden");
+            window.removeEventListener(
+              "scroll",
+              checkAndAnimateServicePrinting
+            );
+          }
+        }
+        function checkAndAnimateServiceDyeing() {
+          if (window.scrollY >= triggerDyeing) {
+            serviceDyeing.classList.add("service-slide-left-animate");
+            serviceDyeing.classList.remove("service-slide-left-hidden");
+            window.removeEventListener("scroll", checkAndAnimateServiceDyeing);
+          }
+        }
+        function checkAndAnimateServiceFinishing() {
+          if (window.scrollY >= triggerFinishing) {
+            serviceFinishing.classList.add("service-slide-right-animate");
+            serviceFinishing.classList.remove("service-slide-right-hidden");
+            window.removeEventListener(
+              "scroll",
+              checkAndAnimateServiceFinishing
+            );
+          }
+        }
+        window.addEventListener("scroll", checkAndAnimateServiceWeaving);
+        window.addEventListener("scroll", checkAndAnimateServicePrinting);
+        window.addEventListener("scroll", checkAndAnimateServiceDyeing);
+        window.addEventListener("scroll", checkAndAnimateServiceFinishing);
+
+        // Scroll to top functionality
+        const scrollToTopBtn = document.getElementById("scrollToTop");
+
+        // Show/hide scroll to top button
+        window.addEventListener("scroll", function () {
+          if (window.pageYOffset > 300) {
+            scrollToTopBtn.classList.add("visible");
+          } else {
+            scrollToTopBtn.classList.remove("visible");
+          }
+        });
+
+        // Smooth scroll to top when button is clicked
+        scrollToTopBtn.addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Extra smooth anchor scrolling for all in-page links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          const targetId = this.getAttribute("href").slice(1);
+          const target =
+            document.getElementById(targetId) ||
+            document.querySelector(`[name='${targetId}']`);
+          if (target) {
+            e.preventDefault();
+            const top = target.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({
+              top,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+      document.addEventListener("DOMContentLoaded", () => {
+        // Add smooth scroll behavior for anchor links
+        const links = document.querySelectorAll('a[href^="#"]');
+
+        links.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+
+        // Add click tracking for social media links
+        const socialLinks = document.querySelectorAll(".footer-social-link");
+
+        socialLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const platform = this.getAttribute("aria-label");
+            console.log(`${platform} link clicked`);
+
+            // Add your social media redirect logic here
+            // For example:
+            // if (platform === 'Facebook') {
+            //     window.open('https://facebook.com/your-page', '_blank');
+            // }
+          });
+        });
+
+        // Add hover effect enhancement for footer sections
+        const footerSections = document.querySelectorAll(".footer > div");
+
+        footerSections.forEach((section) => {
+          section.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-2px)";
+            this.style.transition = "transform 0.3s ease";
+          });
+
+          section.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0)";
+          });
+        });
+
+        // Add contact info click functionality
+        const contactItems = document.querySelectorAll(".footer-contact-item");
+
+        contactItems.forEach((item) => {
+          const text = item.textContent.trim();
+
+          if (text.includes("@")) {
+            // Email
+            item.style.cursor = "pointer";
+            item.addEventListener("click", () => {
+              window.location.href = `mailto:${text.split(" ").pop()}`;
+            });
+          } else if (text.match(/\d/)) {
+            // Phone number
+            item.style.cursor = "pointer";
+            item.addEventListener("click", () => {
+              window.location.href = `tel:${text.replace(/\D/g, "")}`;
+            });
+          }
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+            }
+          });
+        }, observerOptions);
+
+        // Observe footer sections for animation
+        footerSections.forEach((section) => {
+          section.style.opacity = "0";
+          section.style.transform = "translateY(20px)";
+          section.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+          observer.observe(section);
+        });
+      });
+    </script>
+    <!-- Lenis Smooth Scroll Library -->
+    <script src="https://unpkg.com/@studio-freight/lenis@latest/bundled/lenis.min.js"></script>
+    <script>
+      const lenis = new Lenis({
+        duration: 4.5, // Much longer duration for ultra-smooth scrolling
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -15 * t)), // Enhanced ease-out with more gradual curve
+        smooth: true,
+        lerp: 0.08, // Lower lerp value for smoother interpolation
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+    </script>
+    <!-- Navbar Highlight Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const path = window.location.pathname;
+        const page = path.split("/").pop().toLowerCase();
+        document.querySelectorAll('.navbar-home-link, .navbar-products-link, .navbar-contact-link').forEach(link => {
+          link.classList.remove('navbar-home');
+        });
+        if (page === "index.html" || page === "" || page === "#container") {
+          document.querySelector('.navbar-home-link')?.classList.add('navbar-home');
+        } else if (page === "products.html") {
+          document.querySelector('.navbar-products-link')?.classList.add('navbar-home');
+        } else if (page === "contactpage.html") {
+          document.querySelector('.navbar-contact-link')?.classList.add('navbar-home');
+        }
+      });
+    </script>
+  </body>
+</html>
